@@ -4,21 +4,18 @@
 // return an array of strings with the names that are the same.
 // Initiate code:
 // XXXXX is your code
-function XXXXX(same){
-    
-    let person = {}
+function haveSameName() {
+    const sameNamePeople = []
 
-    for (let sameName of same) {
-        let caseInSen = sameName.name.tolowerCase()
-    }
-    
-    // if(same.name.toLowerCase() === same.name.toLowerCase()){
-    //     same.forEach(name => {
-    //         return name;
-    //     });
-    // }else {
-    //     console.log('no one have the same name')
-    // }
+    people.forEach(person => {
+        const peopleWithOutMe = people.filter(p => !(p.name === person.name && p.surname === person.surname))
+        if (peopleWithOutMe.some(ps => ps.name.toLowerCase() === person.name.toLowerCase())) {
+            if (!sameNamePeople.includes(person.name.toLowerCase())) {
+                sameNamePeople.push(person.name.toLowerCase())
+            }
+        }
+    })
+    return sameNamePeople
 }
 
 let people = [
@@ -33,6 +30,6 @@ let people = [
  { name: "david", surname: "Anderson" },
  { name: "Sophia", surname: "Clark" }
 ];
-let result = XXXXX(people)
+let result = haveSameName(people)
 console.log(result); // ["john", "olivia", "david"]
 
